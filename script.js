@@ -6,9 +6,13 @@ function fillShape(id) {
     fields[id] = currentShape;
     if (currentShape == 'cross') {
         currentShape = 'circle';
+        document.getElementById('player-1').classList.add('player-inactive');
+        document.getElementById('player-2').classList.remove('player-inactive');
     }
     else {
         currentShape = 'cross';
+        document.getElementById('player-1').classList.remove('player-inactive');
+        document.getElementById('player-2').classList.add('player-inactive');
     };
     draw();
     checkForWin();
