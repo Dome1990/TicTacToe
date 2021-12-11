@@ -10,6 +10,12 @@ table td {
   border: 5px solid black;
   width: 133px;
   height: 133px;
+  cursor: pointer;
+  transition: all ease-in-out 255ms;
+}
+
+table td:hover {
+  background-color: rgba(173, 17, 108, 0.137);
 }
 
 table tr:first-child td {
@@ -43,4 +49,8 @@ height: 80px;
   width: 80px;
   height: 80px;
   position: absolute;
+}
+
+.d-none {
+  display: none;
 }
