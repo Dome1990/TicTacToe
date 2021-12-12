@@ -66,11 +66,11 @@ function checkForWin() {
         document.getElementById('line-5').style.transform = 'scale(1)  rotate(90deg)';
     }
     if (winner) {
-        gameIsOver();
+        setTimeout(function () { gameIsOver() }, 500);
     }
 }
 
 function gameIsOver() {
-    console.log(winner + ' hat gewonnen');
+    document.getElementById('game-over').classList.remove('d-none');
     gameOver = true;
 }
