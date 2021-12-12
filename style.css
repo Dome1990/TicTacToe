@@ -5,7 +5,7 @@ body {
   flex-direction: column;
 }
 
-footer{
+footer {
   display: none;
 }
 
@@ -27,7 +27,7 @@ footer{
   margin-right: 32px;
 }
 
-.player-inactive{
+.player-inactive {
   opacity: 0.5;
 }
 
@@ -74,8 +74,8 @@ table tr td:last-child {
 }
 
 .shape {
-width: 80px;
-height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .shape img {
