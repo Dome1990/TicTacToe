@@ -36,7 +36,7 @@ tr {
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse: collapse;  
 }
 
 table td {
@@ -86,4 +86,19 @@ table tr td:last-child {
 
 .d-none {
   display: none;
+}
+
+.horizontal-line{
+  position: relative;
+  width: 360px;
+  height: 10px;
+  background-color: black;
+  opacity: 0.2;
+  z-index: 1;
+  transform: scale(0.0);
+}
+
+.make-vertical{
+  transform: rotate(90deg) scale(0.0);
+  top: 212px;
 }
