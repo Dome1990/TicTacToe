@@ -11,14 +11,17 @@
 </head>
 
 <body>
-    <img id="game-over" class="game-over d-none" src="./img/gameover.png">
+    <div id="game-over" class="endscreen d-none">
+    <img class="game-over" src="./img/gameover.png">
+    <button onclick="restartGame()" class="restart-btn">Restart</button>
+    </div>
 
     <div class="player-panel">
         <div id="player-1">
-            <img src="./img/cross.png"> Spieler 1
+            <img src="./img/cross.png"> <span id="score-cross">Spieler 1</span>
         </div>
         <div id="player-2" class="player-inactive">
-            <img src="./img/circle.png"> Spieler 2
+            <img src="./img/circle.png"> <span id="score-circle">Spieler 2</span>
         </div>
     </div>
 
