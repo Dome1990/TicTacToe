@@ -6,18 +6,18 @@ let scoreCross = 0;
 let scoreCircle = 0;
 let score = [];
 
+/**
+ * checks the selected field for previous input and fills it if its still empty
+ * @param {int} id the number of the selected field
+ */
 function fillShape(id) {
     if (fieldIsEmpty(id)) {
         fields[id] = currentShape;
         if (currentShape == 'cross') {
-            currentShape = 'circle';
-            document.getElementById('player-1').classList.add('player-inactive');
-            document.getElementById('player-2').classList.remove('player-inactive');
+            secondPlayerTurn();
         }
         else {
-            currentShape = 'cross';
-            document.getElementById('player-1').classList.remove('player-inactive');
-            document.getElementById('player-2').classList.add('player-inactive');
+            firstPlayerTurn();
         };
         draw();
         checkForWin();
@@ -25,10 +25,33 @@ function fillShape(id) {
     };
 }
 
-function fieldIsEmpty(id){
+/**
+ * 
+ * @param {int} id of the selected field
+ * @returns true if the field ist empty
+ */
+function fieldIsEmpty(id) {
     return !fields[id] && !gameOver;
 }
 
+/**
+ * changes the indication of which players turn it is
+ */
+function firstPlayerTurn() {
+    currentShape = 'cross';
+    document.getElementById('player-1').classList.remove('player-inactive');
+    document.getElementById('player-2').classList.add('player-inactive');
+}
+
+function secondPlayerTurn() {
+    currentShape = 'circle';
+    document.getElementById('player-1').classList.add('player-inactive');
+    document.getElementById('player-2').classList.remove('player-inactive');
+}
+
+/**
+ * displays all crosses/circles which are placed in the fields and are saved in the fields array
+ */
 function draw() {
     for (let i = 0; i < fields.length; i++) {
         if (fields[i] == 'cross') {
@@ -42,14 +65,10 @@ function draw() {
 
 function checkForWin() {
     if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
-        winner = fields[1];
-        score.push(winner);
-        document.getElementById('line-0').style.transform = 'scale(1)';
+        indicatesFirstLine();
     };
     if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
-        winner = fields[3];
-        score.push(winner);
-        document.getElementById('line-1').style.transform = 'scale(1)';
+        indicatesSecondLine();
     }
     if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
         winner = fields[6];
@@ -88,6 +107,18 @@ function checkForWin() {
     };
 }
 
+function indicatesFirstLine() {
+    winner = fields[1];
+    score.push(winner);
+    document.getElementById('line-0').style.transform = 'scale(1)';
+}
+
+function indicatesSecondLine() {
+    winner = fields[3];
+    score.push(winner);
+    document.getElementById('line-1').style.transform = 'scale(1)';
+}
+
 function countScore() {
     scoreCircle = 0;
     scoreCross = 0;
@@ -121,8 +152,8 @@ function restartGame() {
     };
 }
 
-function checkForUndecided(){
-    if(fields.length == 9 && !fields.includes(undefined)){
+function checkForUndecided() {
+    if (fields.length == 9 && !fields.includes(undefined)) {
         showEndscreen();
     }
 }
