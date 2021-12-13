@@ -7,7 +7,7 @@ let scoreCircle = 0;
 let score = [];
 
 function fillShape(id) {
-    if (!fields[id] && !gameOver) {
+    if (fieldIsEmpty(id)) {
         fields[id] = currentShape;
         if (currentShape == 'cross') {
             currentShape = 'circle';
@@ -21,7 +21,12 @@ function fillShape(id) {
         };
         draw();
         checkForWin();
+        checkForUndecided();
     };
+}
+
+function fieldIsEmpty(id){
+    return !fields[id] && !gameOver;
 }
 
 function draw() {
@@ -112,6 +117,12 @@ function restartGame() {
         document.getElementById('cross-' + i).classList.add('d-none');
     };
     for (let i = 0; i < 8; i++) {
-        document.getElementById('line-' + i).classList.add('d-none');
+        document.getElementById('line-' + i).style.transform = 'scale(0)';
     };
+}
+
+function checkForUndecided(){
+    if(fields.length == 9 && !fields.includes(undefined)){
+        showEndscreen();
+    }
 }

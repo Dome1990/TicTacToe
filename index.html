@@ -12,8 +12,8 @@
 
 <body>
     <div id="game-over" class="endscreen d-none">
-    <img class="game-over" src="./img/gameover.png">
-    <button onclick="restartGame()" class="restart-btn">Restart</button>
+        <img class="game-over" src="./img/gameover.png">
+        <button onclick="restartGame()" class="restart-btn">Restart</button>
     </div>
 
     <div class="player-panel">
@@ -24,7 +24,6 @@
             <img src="./img/circle.png"> <span id="score-circle">Spieler 2</span>
         </div>
     </div>
-
 
     <!-- horizontal lines to indicate the winner -->
     <div id="line-0" class="horizontal-line" style="top: 123px;"></div>
@@ -37,8 +36,10 @@
     <div id="line-5" class="horizontal-line make-vertical" style="right: -140px;"></div>
 
     <!-- diagonal lines to indicate the winner -->
-    <div id="line-6" class="horizontal-line" style="transform: rotate(45deg) scale(0.0); top: 204px; width: 500px;"></div>
-    <div id="line-7" class="horizontal-line" style="transform: rotate(-45deg) scale(0.0); top: 193px; width: 500px;"></div>
+    <div id="line-6" class="horizontal-line" style="transform: rotate(45deg) scale(0.0); top: 204px; width: 500px;">
+    </div>
+    <div id="line-7" class="horizontal-line" style="transform: rotate(-45deg) scale(0.0); top: 193px; width: 500px;">
+    </div>
 
     <table>
         <tr>
