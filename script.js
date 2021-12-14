@@ -63,65 +63,18 @@ function draw() {
     }
 }
 
-function checkForWin() {
-    if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0]) {
-        indicatesFirstLine();
-    };
-    if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3]) {
-        indicatesSecondLine();
-    }
-    if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6]) {
-        winner = fields[6];
-        score.push(winner);
-        document.getElementById('line-2').style.transform = 'scale(1)';
-    };
-    if (fields[6] == fields[4] && fields[4] == fields[2] && fields[6]) {
-        winner = fields[6];
-        score.push(winner);
-        document.getElementById('line-7').style.transform = 'scale(1) rotate(-45deg)';
-    };
-    if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
-        winner = fields[0];
-        score.push(winner);
-        document.getElementById('line-6').style.transform = 'scale(1) rotate(45deg)';
-    };
-    if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0]) {
-        winner = fields[0];
-        score.push(winner);
-        document.getElementById('line-4').style.transform = 'scale(1) rotate(90deg)';
-    };
-    if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1]) {
-        winner = fields[1];
-        score.push(winner);
-        document.getElementById('line-3').style.transform = 'scale(1) rotate(90deg)';
-    };
-    if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2]) {
-        winner = fields[2];
-        score.push(winner);
-        document.getElementById('line-5').style.transform = 'scale(1)  rotate(90deg)';
-    };
-    if (winner) {
-        gameOver = true;
-        setTimeout(function () { showEndscreen() }, 500);
-        countScore();
-    };
-}
-
-function indicatesFirstLine() {
-    winner = fields[1];
-    score.push(winner);
-    document.getElementById('line-0').style.transform = 'scale(1)';
-}
-
-function indicatesSecondLine() {
-    winner = fields[3];
-    score.push(winner);
-    document.getElementById('line-1').style.transform = 'scale(1)';
-}
-
 function countScore() {
+    resetScore();
+    countPoints();
+    printScore();
+}
+
+function resetScore() {
     scoreCircle = 0;
     scoreCross = 0;
+}
+
+function countPoints(){
     for (let i = 0; i < score.length; i++) {
         if (score[i] == 'cross') {
             scoreCross++;
@@ -130,6 +83,9 @@ function countScore() {
             scoreCircle++;
         };
     };
+}
+
+function printScore(){
     document.getElementById('score-circle').innerHTML = scoreCircle;
     document.getElementById('score-cross').innerHTML = scoreCross;
 }
@@ -152,6 +108,10 @@ function restartGame() {
     };
 }
 
+/**
+ * if the fields array is full and no empty elements are included 
+ * there is no winner and the endscreen will be showed
+ */
 function checkForUndecided() {
     if (fields.length == 9 && !fields.includes(undefined)) {
         showEndscreen();
